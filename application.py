@@ -48,7 +48,6 @@ except FileNotFoundError:
     ENDPOINT = os.getenv('ENDPOINT')
     FACE_KEY = os.getenv('FACE_KEY')
     FACE_END = os.getenv('FACE_END')
-
     LINE_SECRET = os.getenv('LINE_SECRET')
     LINE_TOKEN = os.getenv('LINE_TOKEN')
     IMGUR_CONFIG = {
@@ -63,7 +62,8 @@ CV_CLIENT = ComputerVisionClient(
 LINE_BOT = LineBotApi(LINE_TOKEN)
 HANDLER = WebhookHandler(LINE_SECRET)
 IMGUR_CLIENT = Imgur(config=IMGUR_CONFIG)
-
+FACE_CLIENT = FaceClient(FACE_END, CognitiveServicesCredentials(FACE_KEY))
+PERSON_GROUP_ID = "elsiegroup"
 
 @app.route("/")
 def hello():
